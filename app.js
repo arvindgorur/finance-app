@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require ('mongoose');
 
 const financeRoutes = require('./routes/recordRoutes');
-
+const authRoutes = require('./routes/authRoutes');
 const port = process.env.port || 8080;
 const app = express();
 
@@ -17,6 +17,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/record', financeRoutes);
+app.use('/api/auth', authRoutes);
 
 mongoose
     .connect(process.env.CONNECTION_STRING, {useNewUrlParser: true})
